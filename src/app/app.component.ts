@@ -7,4 +7,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app-rxjs';
+
+  constructor(){
+    this.onComplete().then(this.setTitle)
+  }
+
+  private setTitle =() =>{
+    this.title = 'Nauka Angulara'
+  }
+
+  private changeTitle (callback:Function){
+    setTimeout(()=>{
+      callback()
+    },2000)
+  }
+
+  private onComplete (){
+    return new Promise<void>(resolve =>{
+      setTimeout(()=>{
+        resolve()
+      },2000)})
+    }
+  
 }
